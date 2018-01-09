@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package adder;
+
+message Operands {
+  uint64 a = 1;
+  uint64 b = 2;
+}
+
+message Response {
+  uint64 result = 1;
+}
+
+service addition {
+  rpc Add (Operands) returns (Response) {}
+}

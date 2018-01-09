@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	pb "github.com/DISCVR-project/experiments/gRPC/calculator"
+	pb "github.com/DISCVR-project/experiments/gRPC/calculator/adder"
 	"google.golang.org/grpc"
 )
 
@@ -20,11 +20,11 @@ func main() {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
-	c := pb.NewCalculatorClient(conn)
+	c := pb.NewAdditionClient(conn)
 
 	// Contact the server and print out its response.
 	operands := &pb.Operands{A: 3, B: 3}
-	r, err := c.Div(context.Background(), operands)
+	r, err := c.Add(context.Background(), operands)
 	if err != nil {
 		log.Fatalf("could not add: %v", err)
 	}
