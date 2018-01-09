@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package calc;
+
+message Operands {
+  uint64 a = 1;
+  uint64 b = 2;
+}
+
+message Response {
+  uint64 result = 1;
+}
+
+service Calculator {
+  rpc Add (Operands) returns (Response) {}
+  rpc Div (Operands) returns (Response) {}
+}
