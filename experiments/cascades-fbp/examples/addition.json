@@ -1,0 +1,39 @@
+{
+  "properties": {
+    "name": "just an add operation"
+  },
+  "processes": {
+    "Addition": {
+      "component": "core/add"
+    },
+    "IP Logger": {
+      "component": "core/console"
+    }
+  },
+  "connections": [
+    {
+      "data": "/home/oa/go/src/github.com/cascades-fbp/ina.json",
+      "tgt": {
+        "process": "Addition",
+        "port": "INA"
+      }
+    },
+    {
+        "data": "/home/oa/go/src/github.com/cascades-fbp/inb.json",
+        "tgt": {
+          "process": "Addition",
+          "port": "INB"
+        }
+    },
+    {
+        "src": {
+          "process": "Addition",
+          "port": "SUM"
+        },
+        "tgt": {
+          "process": "IP Logger",
+          "port": "IN"
+        }
+    }
+  ]
+}

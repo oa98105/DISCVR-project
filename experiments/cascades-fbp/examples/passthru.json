@@ -1,0 +1,32 @@
+{
+  "properties": {
+    "name": "passthru"
+  },
+  "processes": {
+    "pass through": {
+      "component": "core/passthru"
+    },
+    "IP Logger": {
+      "component": "core/console"
+    }
+  },
+  "connections": [
+    {
+      "data": "Hi",
+      "tgt": {
+        "process": "pass through",
+        "port": "IN"
+      }
+    },
+    {
+        "src": {
+          "process": "pass through",
+          "port": "OUT"
+        },
+        "tgt": {
+          "process": "IP Logger",
+          "port": "IN"
+        }
+    }
+  ]
+}
